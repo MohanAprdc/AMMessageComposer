@@ -110,6 +110,7 @@
     else
     {
         self.videoThumbImageView.image = [userinfo valueForKey:MPMoviePlayerThumbnailImageKey];
+        [self.moviePlayerController stop];
     }
 }
 

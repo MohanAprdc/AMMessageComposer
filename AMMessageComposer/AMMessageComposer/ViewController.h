@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Mohan. All rights reserved.
 //
 
-#import "ACMessageComposerVC.h"
+#import "AMMessageComposerVC.h"
 
-@interface ViewController : ACMessageComposerVC<ACMessageComposerDatasource, ACMessageComposerDelegate>
+@interface ViewController : AMMessageComposerVC<AMMessageComposerDatasource, AMMessageComposerDelegate>
 
 @end

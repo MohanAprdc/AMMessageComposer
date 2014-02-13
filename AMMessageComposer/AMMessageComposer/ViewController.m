@@ -28,8 +28,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.acDataSource = self;
-    self.acDelegate = self;
+    self.amDataSource = self;
+    self.amDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,17 +44,17 @@
     return 10;
 }
 
--(ACMessageCellType) typeOfTheMessage:(NSIndexPath *)indexPath
+-(AMMessageCellType) typeOfTheMessage:(NSIndexPath *)indexPath
 {
     if (indexPath.row % 2 == 0)
     {
         if (indexPath.row % 4 == 0)
-            return ACMessageCellTypeVideo;
+            return AMMessageCellTypeVideo;
         else
-            return ACMessageCellTypeImage;
+            return AMMessageCellTypeImage;
     }
     else
-        return ACMessageCellTypeText;
+        return AMMessageCellTypeText;
 }
 
 -(BOOL) isCurrentUserSentMessageAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +82,10 @@
 
 -(NSString *) userNameForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return @"Mohan";
+    if (indexPath.row % 2 == 0)
+        return @"Me";
+    else
+        return @"Mohan";
 }
 
 -(NSDate *) timeStampForRowAtIndexPath:(NSIndexPath *)indexPath

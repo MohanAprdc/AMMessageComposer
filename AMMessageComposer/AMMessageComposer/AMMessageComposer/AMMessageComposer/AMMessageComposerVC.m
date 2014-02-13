@@ -13,10 +13,8 @@
 
 #define MESSAGE_COMPOSER_HEIGHT 40.0
 
-#define NO_OF_MESSAGGES_HARD_CODED_VALUE 10
-
 @interface AMMessageComposerVC ()<UITableViewDataSource, UITableViewDelegate,
-                            UITextViewDelegate, UIScrollViewDelegate>
+                            UITextViewDelegate>
 
 @property (nonatomic, strong) UITableView *messageTableView;
 @property (nonatomic, strong) UIView *messageComposerView;
@@ -54,7 +52,7 @@
 -(void) viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self scrollToBottom];
+    [self scrollToBottom];
     
     // add keyboard notifications
     NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
@@ -196,7 +194,8 @@
 -(void) scrollToBottom
 {
     [self.messageTableView beginUpdates];
-    NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:NO_OF_MESSAGGES_HARD_CODED_VALUE-1
+    NSInteger numberOfRows = [self.messageTableView numberOfRowsInSection:0];
+    NSIndexPath *lastCellIndexPath = [NSIndexPath indexPathForItem:numberOfRows-1
                                                          inSection:0];
     [self.messageTableView scrollToRowAtIndexPath:lastCellIndexPath
                                  atScrollPosition:UITableViewScrollPositionBottom
@@ -456,12 +455,6 @@
     }
     [self changeTextViewSize];
     return YES;
-}
-
-#pragma mark - UIScrollViewDelegate
--(void) scrollViewDidScroll:(UIScrollView *)scrollView
-{
-//    [self.messageTextView resignFirstResponder];
 }
 
 #pragma mark - Keyboard Notifications
